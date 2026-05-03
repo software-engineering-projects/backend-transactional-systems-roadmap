@@ -1,8 +1,9 @@
 # state-driven-python-execution-graph-system
 State-driven Python execution graph system that analyzes code structure and runtime behavior to map function interactions, state transitions, and data flow. Combines AST parsing, runtime tracking, and graph visualization to turn code into an interpretable system model.
 
+<br>
 
-## 0. Core Design Principle
+### 0. Core Design Principle
 
 This system is not a call graph tool. It is a state-transition observability system. Every component must answer:
 
@@ -12,7 +13,7 @@ This system is not a call graph tool. It is a state-transition observability sys
 
 ---
 
-## 1. High-Level Architecture
+### 1. High-Level Architecture
 
 The system consists of four primary modules:
 
@@ -23,7 +24,7 @@ The system consists of four primary modules:
 
 ---
 
-## 2. Module 1 — Analyzer (AST Parsing)
+### 2. Module 1 — Analyzer (AST Parsing)
 
 **Purpose:** Extract structure including functions, modules, and call relationships.
 
@@ -66,7 +67,7 @@ class Analyzer(ast.NodeVisitor):
 
 ---
 
-## 3. Module 2 — Tracker (Runtime Instrumentation)
+### 3. Module 2 — Tracker (Runtime Instrumentation)
 
 **Purpose:** Capture actual execution and state transitions.
 
@@ -110,7 +111,7 @@ class Tracker:
 
 ---
 
-## 4. Module 3 — Recorder (Event Log)
+### 4. Module 3 — Recorder (Event Log)
 
 **Purpose:** Store transitions as events.
 
@@ -135,7 +136,7 @@ class Recorder:
 
 ---
 
-## 5. Module 4 — Visualizer (Graph)
+### 5. Module 4 — Visualizer (Graph)
 
 **Purpose:** Convert logs into a graph.
 
@@ -172,7 +173,7 @@ class Visualizer:
 
 ---
 
-## 6. Connecting the Components
+### 6. Connecting the Components
 
 ```python
 recorder = Recorder()
@@ -194,7 +195,7 @@ viz.build_graph().render("output", view=True)
 
 ---
 
-## 7. Version 1 Capabilities
+### 7. Version 1 Capabilities
 
 The initial version provides a visualization of:
 *   A → B transition
@@ -204,23 +205,23 @@ The initial version provides a visualization of:
 
 ---
 
-## 8. Strategic Extensions
+### 8. Strategic Extensions
 
-### A. Call Stack Tracking
+#### A. Call Stack Tracking
 Implement `self.call_stack.append(func.__name__)` to derive true parent-child relationships.
 
-### B. Variable-Level State Tracking
+#### B. Variable-Level State Tracking
 Instead of just tracking arguments and results, track `locals()` using the `inspect` module or frame access.
 
-### C. Invariant Detection
+#### C. Invariant Detection
 Add checks (e.g., `assert balance >= 0`) and log violations for visualization.
 
-### D. Static and Dynamic Merging
+#### D. Static and Dynamic Merging
 Combine Analyzer output (possible calls) with Tracker output (actual calls) to visualize expected vs. actual system behavior.
 
 ---
 
-## 9. Implementation Challenges
+### 9. Implementation Challenges
 
 *   **State Explosion:** Excessive data can result in unreadable graphs.
 *   **Introspection Limits:** Tracking local variables in Python is complex.
@@ -228,7 +229,7 @@ Combine Analyzer output (possible calls) with Tracker output (actual calls) to v
 
 ---
 
-## Final Mental Model
+### Final Mental Model
 
 You are building a **State Graph Engine**.
 
