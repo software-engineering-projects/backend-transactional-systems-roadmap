@@ -208,16 +208,16 @@ The initial version provides a visualization of:
 ### 8. Strategic Extensions
 
 #### A. Call Stack Tracking
-Implement `self.call_stack.append(func.__name__)` to derive true parent-child relationships.
+- Implement `self.call_stack.append(func.__name__)` to derive true parent-child relationships.
 
 #### B. Variable-Level State Tracking
-Instead of just tracking arguments and results, track `locals()` using the `inspect` module or frame access.
+- Instead of just tracking arguments and results, track `locals()` using the `inspect` module or frame access.
 
 #### C. Invariant Detection
-Add checks (e.g., `assert balance >= 0`) and log violations for visualization.
+- Add checks (e.g., `assert balance >= 0`) and log violations for visualization.
 
 #### D. Static and Dynamic Merging
-Combine Analyzer output (possible calls) with Tracker output (actual calls) to visualize expected vs. actual system behavior.
+- Combine Analyzer output (possible calls) with Tracker output (actual calls) to visualize expected vs. actual system behavior.
 
 ---
 
